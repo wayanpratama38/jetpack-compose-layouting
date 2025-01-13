@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -68,7 +69,8 @@ fun CategoryRow(
 ){
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = modifier.padding(16.dp)
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = modifier
     ) {
         items(dummyCategory,key = {it.textCategory}){
             category->
