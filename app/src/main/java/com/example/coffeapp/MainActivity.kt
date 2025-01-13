@@ -21,12 +21,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.coffeapp.model.dummyCategory
 import com.example.coffeapp.ui.components.CategoryItems
 import com.example.coffeapp.ui.components.Search
+import com.example.coffeapp.ui.components.SectionText
 import com.example.coffeapp.ui.theme.CoffeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,9 +43,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Homepage() {
-    Column {
+fun Homepage(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
         Banner()
+        SectionText(stringResource(R.string.section_category))
+        CategoryRow()
     }
 }
 
@@ -89,9 +93,10 @@ fun CategoryRowPreview() {
 
 @Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview(modifier: Modifier = Modifier) {
     CoffeAppTheme {
-        // homepage
-        Homepage()
+        Column(modifier = modifier){
+            Homepage()
+        }
     }
 }
