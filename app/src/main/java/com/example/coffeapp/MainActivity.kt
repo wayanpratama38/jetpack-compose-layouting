@@ -5,12 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +23,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.coffeapp.model.dummyCategory
+import com.example.coffeapp.ui.components.CategoryItems
 import com.example.coffeapp.ui.components.Search
 import com.example.coffeapp.ui.theme.CoffeAppTheme
 
@@ -54,6 +59,29 @@ fun Banner(
             modifier = Modifier.height(160.dp)
         )
         Search()
+    }
+}
+
+@Composable
+fun CategoryRow(
+    modifier: Modifier=Modifier
+){
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.padding(16.dp)
+    ) {
+        items(dummyCategory,key = {it.textCategory}){
+            category->
+            CategoryItems(category)
+        }
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun CategoryRowPreview() {
+    CoffeAppTheme {
+        CategoryRow()
     }
 }
 
