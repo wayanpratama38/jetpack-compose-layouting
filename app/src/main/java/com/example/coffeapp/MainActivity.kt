@@ -18,24 +18,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CoffeAppTheme {
-
+                Homepage()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Homepage() {
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     CoffeAppTheme {
-        Greeting("Android")
+        // homepage
+        Homepage()
     }
 }
