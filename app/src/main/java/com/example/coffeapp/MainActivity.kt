@@ -32,6 +32,7 @@ import com.example.coffeapp.model.dummyBestSellerMenu
 import com.example.coffeapp.model.dummyCategory
 import com.example.coffeapp.model.dummyMenu
 import com.example.coffeapp.ui.components.CategoryItems
+import com.example.coffeapp.ui.components.HomeSection
 import com.example.coffeapp.ui.components.MenuItem
 import com.example.coffeapp.ui.components.MenuItemPreview
 import com.example.coffeapp.ui.components.Search
@@ -55,12 +56,18 @@ class MainActivity : ComponentActivity() {
 fun Homepage(modifier: Modifier = Modifier) {
     Column(modifier = modifier.verticalScroll(rememberScrollState())) {
         Banner()
-        SectionText(stringResource(R.string.section_category))
-        CategoryRow()
-        SectionText(stringResource(R.string.section_favorite_menu))
-        MenuRow(dummyMenu)
-        SectionText(stringResource(R.string.section_best_seller_menu))
-        MenuRow(dummyBestSellerMenu)
+        HomeSection(
+            title = stringResource(R.string.section_category),
+            content = { CategoryRow() }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_favorite_menu),
+            content = { MenuRow(dummyMenu) }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_best_seller_menu),
+            content = { MenuRow(dummyBestSellerMenu) }
+        )
     }
 }
 
@@ -128,7 +135,7 @@ fun MenuRow(
 
 
 // Main App Preview
-@Preview(showBackground = true, device = Devices.PIXEL_4)
+@Preview(showSystemUi = true,showBackground = true, device = Devices.PIXEL_4)
 @Composable
 fun GreetingPreview(modifier: Modifier = Modifier) {
     CoffeAppTheme {
